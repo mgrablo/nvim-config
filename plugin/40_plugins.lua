@@ -200,3 +200,9 @@ Config.now(function()
   -- Enable only one
   vim.cmd('color ayu')
 end)
+
+now_if_args(function()
+  add({ "https://github.com/kdheepak/lazygit.nvim" })
+  require("lazygit")
+  nmap_leader("gg", "<CMD>LazyGit<CR>", "Open Lazygit")
+end)
