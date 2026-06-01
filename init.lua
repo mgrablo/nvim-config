@@ -119,3 +119,6 @@ Config.on_packchanged = function(plugin_name, kinds, callback, desc)
   end
   Config.new_autocmd('PackChanged', '*', f, desc)
 end
+
+-- This allows per project nvim configs
+vim.o.exrc = true
