@@ -110,6 +110,7 @@ now_if_args(function()
     "lua_ls",
     "tinymist",
     "nushell",
+    "lemminx"
   })
 end)
 
@@ -137,7 +138,22 @@ later(function()
     -- Make sure that necessary CLI tool is available
     formatters_by_ft = {
       lua = { 'stylua' },
+      csharp = { 'csharpier' },
+      xaml = { 'csharpier' },
+      xml = { 'xmlformat' },
     },
+    formatters = {
+      csharpier = {
+        command = "csharpier",
+        args = { "--write-stdout" },
+        stdin = true,
+      },
+      xmlformat = {
+        command = "xmlformat",
+        args = { "--selfclose", "-" },
+        stdin = true,
+      },
+    }
   })
 end)
 

@@ -141,3 +141,18 @@ local diagnostic_opts = {
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup
 Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
 
+vim.filetype.add({
+  extension = {
+    xaml = "xaml",
+  },
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.xaml",
+  callback = function()
+    vim.bo.filetype = "xaml"
+  end,
+})
+
+vim.treesitter.language.register("xml", "xaml")
+-- stylua: ignore end
