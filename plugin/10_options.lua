@@ -33,6 +33,17 @@ vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 vim.cmd('filetype plugin indent on')
 if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
 
+if vim.fn.has("win32") == 1 then
+  vim.opt.sh = "nu"
+  vim.opt.shelltemp = false
+  vim.opt.shellredir = "out+err> %s"
+  vim.opt.shellcmdflag = "--stdin --no-newline -c"
+  vim.opt.shellxescape = ""
+  vim.opt.shellxquote = ""
+  vim.opt.shellquote = ""
+  vim.opt.shellpipe = '| complete | update stderr { ansi strip } | tee { get stderr | save --force --raw %s } | into record'
+end
+
 -- UI =========================================================================
 vim.o.breakindent    = true       -- Indent wrapped lines to match line start
 vim.o.breakindentopt = 'list:-1'  -- Add padding for lists (if 'wrap' is set)
