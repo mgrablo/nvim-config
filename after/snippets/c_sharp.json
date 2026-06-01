@@ -1,0 +1,47 @@
+{
+  "Dependency Property": {
+    "prefix": "propdp",
+    "description": "Code snippet for a property using DependencyProperty as the backing store",
+    "body": [
+      "public ${1:int} ${2:MyProperty}",
+      "{",
+      "    get => (${1:int})GetValue(${2:MyProperty}Property);",
+      "    set => SetValue(${2:MyProperty}Property, value);",
+      "}",
+      "",
+      "public static readonly DependencyProperty ${2:MyProperty}Property =",
+      "    DependencyProperty.Register(nameof(${2:MyProperty}), typeof(${1:int}), typeof(${3:$TM_FILENAME_BASE}), new PropertyMetadata(${4:0}));",
+      "$0"
+    ]
+  },
+  "INotifyPropertyChanged": {
+    "prefix": "inpc",
+    "description": "INotifyPropertyChanged implementation",
+    "body": [
+      "public event PropertyChangedEventHandler? PropertyChanged;",
+      "protected virtual void OnPropertyChanged(string propertyName) =>",
+      "    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));",
+      "$0"
+    ]
+  },
+  "Observable Property": {
+    "prefix": "propobs",
+    "description": "Property with backing field and OnPropertyChanged",
+    "body": [
+      "private ${1:int} _${2:count};",
+      "public ${1:int} ${3:Count}",
+      "{",
+      "    get => _${2:count};",
+      "    set",
+      "    {",
+      "        if (_${2:characterCount} == value)",
+      "            return;",
+      "        _${2:count} = value;",
+      "        OnPropertyChanged(nameof(${3:Count}));",
+      "    }",
+      "}",
+      "$0"
+    ]
+  }
+}
+
