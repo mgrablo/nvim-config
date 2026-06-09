@@ -11,6 +11,9 @@ end
 nmap_leader("rb", "<CMD>Dotnet build<CR>", "Dotnet build")
 nmap_leader("rr", "<CMD>Dotnet run<CR>", "Dotnet run")
 
+-- Editiing options
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 -- MiniFiles integration
 vim.api.nvim_create_autocmd("User", {

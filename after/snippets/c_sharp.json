@@ -42,6 +42,13 @@
       "}",
       "$0"
     ]
+  },
+  "WriteLine": {
+    "prefix": "cw",
+    "description": "Console.WriteLine",
+    "body": [
+      "Console.WriteLine($0);"
+    ]
   }
 }
 
