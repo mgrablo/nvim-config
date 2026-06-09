@@ -6,6 +6,32 @@ end
 add({'https://github.com/chomosuke/typst-preview.nvim'})
 require('typst-preview').setup()
 
+add({'https://github.com/HakonHarnes/img-clip.nvim'})
+require('img-clip').setup({
+  default = {
+    dir_path = function ()
+      local current_dir = vim.fn.expand("%:p:h")
+      local full_path = current_dir .. "/assets"
+      local safe_path = full_path:gsub("\\", "/")
+      return safe_path
+    end,
+    show_dir_path_in_prompt = true,
+  },
+  filetypes = {
+    typst = {
+      template = function(context)
+        local file_path = context.file_path
+        local safe_path = file_path:gsub("\\", "/")
+        return '#figure(\n'
+        .. '  image("' .. safe_path .. '", width: 80%),\n'
+        .. '  caption: [$CURSOR],\n'
+        .. ')'
+      end,
+    }
+  }
+})
+nmap_leader('p', '<cmd>PasteImage<cr>', 'Paste image from system clipboard')
+
 -- Enable spelling and wrap for window
 vim.cmd('setlocal spell wrap')
 vim.cmd('setlocal spelllang=pl')
