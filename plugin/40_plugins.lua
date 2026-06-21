@@ -222,22 +222,4 @@ now_if_args(function()
     src = 'https://github.com/mrcjkb/rustaceanvim',
     version = vim.version.range('^9')
   }}
-
-  vim.g.rustaceanvim = {
-    server = {
-      cmd = { "rustup", "run", "stable", "rust-analyzer" },
-      default_settings = {
-        ['rust-analyzer'] = {
-          cargo = {
-            target = "xtensa-esp32s3-none-elf",
-            allTargets = false,
-            extraEnv = { RUST_TOOLCHAIN = "esp" },
-          },
-          server = {
-            extraEnv = { RUST_TOOLCHAIN = "stable" },
-          }
-        }
-      }
-    }
-  }
 end)
