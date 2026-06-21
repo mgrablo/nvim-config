@@ -195,10 +195,18 @@ Config.now(function()
   -- Install only those that you need
   add({
     'https://github.com/Shatur/neovim-ayu',
+    {
+      src = "https://github.com/rose-pine/neovim",
+      name = "rose-pine",
+    },
+  })
+
+  require('rose-pine').setup({
+    variant = "main"
   })
 
   -- Enable only one
-  vim.cmd('color ayu')
+  vim.cmd('color rose-pine')
 end)
 
 now_if_args(function()
